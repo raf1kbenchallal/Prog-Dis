@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monapp
+  template:
+    metadata:
+      labels:
+        app: monapp
+    spec:
+      containers:
+      - name: monapp
+        image: raf1kbenchallal/monapp:latest
+        ports:
+        - containerPort: 3000

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: second-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: second-service
+  template:
+    metadata:
+      labels:
+        app: second-service
+    spec:
+      containers:
+      - name: second-service-container
+        image: raf1kbenchallal/second-service:latest
+        ports:
+        - containerPort: 8080

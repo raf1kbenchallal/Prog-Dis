@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /monapp-service
+        pathType: Prefix
+        backend:
+          service:
+            name: monapp-service
+            port:
+              number: 80
+      - path: /kubernetes
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes
+            port:
+              number: 80
